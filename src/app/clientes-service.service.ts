@@ -6,9 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class ClientesServiceService {
 
-  constructor(private http: HttpClient) { 
-
-    // Metodos 
+  constructor(private http: HttpClient) {  }
+  // TODO: Metodos 
 
     // Metodo que al realizar una peticion get al API, para obtener la lista de clientes
     // Método que hace lo que anteriormente haciamos en HTTPie
@@ -17,5 +16,4 @@ export class ClientesServiceService {
         console.log(respuesta);
       });
     }
-  }
 }
