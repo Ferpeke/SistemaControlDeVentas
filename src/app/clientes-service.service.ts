@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -10,7 +11,7 @@ export class ClientesServiceService {
   public urlService: string = "http://localhost:8082/";
   //public urlService: string = "http://10.10.10.36:8082/"; // Ambiente Externo
   public listaClientes: any[];
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private router : Router) { 
     this.listaClientes = [];
    }
   // TODO: Metodos 
@@ -46,7 +47,8 @@ export class ClientesServiceService {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            this.obtenerListaClientes();
+//            this.obtenerListaClientes();
+              this.router.navigate(['clientes']);
           } else if (result.isDenied) {
             Swal.fire("El registro se cancelo", "", "warning");
           }
