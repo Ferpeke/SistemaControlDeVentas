@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,21 @@ export class ClientesServiceService {
       this.http.get(this.urlService + 'api/clientes').subscribe((respuesta : any) => {
         console.log(respuesta);
         this.listaClientes = respuesta;
+      });
+    }
+
+    // TODO: Metodo que realiza una peticion get al API, para obtener insertar un nuevo cliente.
+
+    guardarCliente(nombre : string, apPat: string, apMat: string, telefono : string, correo : string, numAfiliado: string) {
+      this.http.post(this.urlService + "api/clientes",{
+        "nombre" : nombre,
+        "apPaterno" : apPat,
+        "apMaterno" : apMat,
+        "telefono" : telefono,
+        "correo" : correo,
+        "numAfiliado" : numAfiliado
+      },).subscribe(( respuesta : any) => {
+        console.log(respuesta);
       });
     }
 }
