@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { response } from 'express';
+import Swal form 'sweetaltert2';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +36,20 @@ export class ClientesServiceService {
         "numAfiliado" : numAfiliado
       },).subscribe(( respuesta : any) => {
         console.log(respuesta);
+
+        Swal.fire({
+          title: "Do you want to save the changes?",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "OK",
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            this.obtenerListaClientes();
+          } else if (result.isDenied) {
+            Swal.fire("Changes are not saved", "", "info");
+          }
+        });
       });
     }
 }
