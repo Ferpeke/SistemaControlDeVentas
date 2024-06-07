@@ -1,0 +1,41 @@
+<div class="container shadow p-0">
+    <div class="row p-1">
+        <div class="col-12 text-center">
+            <h2>Fomulario <strong>Alta Producto</strong></h2>
+        </div>
+    </div>
+    <div class="row p-5">
+        <div class="col-12">
+            <div class="form-group">
+                <label for=""><strong>Nombre Producto</strong></label>
+                <input type="text" name="" id="" class="form-control" #nombre>
+            </div>
+
+            <div class="form-group">
+                <label for=""><strong>Descripcion del Producto</strong></label>
+                <input type="text" name="" id="" class="form-control" #descripcion>
+            </div>
+
+            <div class="form-group">
+                <label for=""><strong>Stock:</strong></label>
+                <input type="number" name="" id="" class="form-control w-25" #stock>
+            </div>
+
+            <div class="form-group">
+                <label for=""><strong>Precio:</strong></label>
+                <input type="number" name="" id="" class="form-control w-25" #precio>
+            </div>
+
+            <div class="form-group mt-2">
+                <select  class="form-select" aria-label="Default select example" #categoria>
+                    <option selected disabled>--Selecciona una categoria--</option>
+                    <option *ngFor="let producto of lisCategorias" value="{{producto}}">{{producto}}</option>
+                </select>
+            </div>
+
+            <div class="form-group mt-2 text-uppercase text-center">
+                <button class="btn btn-outline-info w-50" (click) = "guardarProducto()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
