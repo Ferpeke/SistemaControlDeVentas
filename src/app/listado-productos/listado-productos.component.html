@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <h2>Lista de <strong>Productos</strong></h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Categoria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of listadoProductos">
+                        <th scope="row">{{p.id}}</th>
+                        <td>{{p.nombre}}</td>
+                        <td>{{p.descripcion}}</td>
+                        <td>{{p.stock}}</td>
+                        <td>{{p.precio}}</td>
+                        <td>{{p.categoria}}</td>
+                        <td>
+                            <a href="" class="btn btn-success">Detalle</a>
+                        </td>
+
+                        <td>
+                            <a href="" class="btn btn-warning">Editar</a>
+                        </td>
+                        
+                        <td>
+                            <a href="" class="btn btn-danger">Eliminar</a>
+                        </td>
+
+                        <td>
+                            <a href="" class="btn btn-info">Ver ventas</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

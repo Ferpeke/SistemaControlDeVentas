@@ -12,5 +12,15 @@ import { ProductosServiceService } from '../productos-service.service';
 })
 export class ListadoProductosComponent {
 
-  constructor(private ps : ProductosServiceService){}
+  constructor(private ps : ProductosServiceService){
+    ps.obtenerListaProductos();
+  }
+
+  // TODO: Nos traemos la lista de todos los productos
+
+  // gets
+
+  get listadoProductos(){
+    return this.ps.listaProductos;
+  }
 }

@@ -16,6 +16,13 @@ export class ProductosServiceService {
 
   // TODO: Métodos para la tabla productos
   
+  obtenerListaProductos() : void {
+    this.http.get(this.urlService + 'api/productos').subscribe((respuesta : any) => {
+      console.log(respuesta);
+      this.listaProductos = respuesta;
+    });
+  }
+
   obtenerListaCategorias() : void {
     this.http.get(this.urlService + 'api/productos/lista/categrias').subscribe((respuesta : any) => {
       console.log(respuesta);
