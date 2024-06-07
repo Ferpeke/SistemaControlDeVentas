@@ -47,7 +47,7 @@ export class ClientesServiceService {
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-//            this.obtenerListaClientes();
+              //this.obtenerListaClientes();
               this.router.navigate(['clientes']);
           } else if (result.isDenied) {
             Swal.fire("El registro se cancelo", "", "warning");
@@ -55,4 +55,5 @@ export class ClientesServiceService {
         });
       });
     }
+
 }
