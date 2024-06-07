@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import Swal form 'sweetaltert2';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesServiceService {
   // Atributos
-  public urlService: string = "http://localhost:8082/"; // Ambiente local
+  public urlService: string = "http://localhost:8082/";
   //public urlService: string = "http://10.10.10.36:8082/"; // Ambiente Externo
   public listaClientes: any[];
   constructor(private http: HttpClient) { 
@@ -38,7 +38,8 @@ export class ClientesServiceService {
         console.log(respuesta);
 
         Swal.fire({
-          title: "Do you want to save the changes?",
+          title: "Cliente guardado",
+          icon:"success",
           showDenyButton: false,
           showCancelButton: false,
           confirmButtonText: "OK",
@@ -47,7 +48,7 @@ export class ClientesServiceService {
           if (result.isConfirmed) {
             this.obtenerListaClientes();
           } else if (result.isDenied) {
-            Swal.fire("Changes are not saved", "", "info");
+            Swal.fire("El registro se cancelo", "", "warning");
           }
         });
       });
