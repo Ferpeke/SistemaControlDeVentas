@@ -1,0 +1,46 @@
+<!-- <p>cliente-compra-detalles works!</p>
+
+<div *ngIf="ventasDetalles.length != 0">
+    <p *ngFor="let s of ventasDetalles">{{s}}</p>
+</div> -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center">
+                <h2>Lista de Clientes</h2>
+            </div>
+        </div>
+        <div class="col-12 text-center mt-2">
+            <a href="" class="btn btn-outline-warning">Regresar</a>
+        </div>
+    </div>
+    <div *ngIf="ventasDetalles.length === 0">
+        <div class="alert alert-danger mt-2" role="alert">
+            <h4 class="h4">El cliente aun <strong>no ha realizado</strong> compras!</h4>    
+        </div>              
+    </div>
+    <div *ngIf="ventasDetalles.length != 0" class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Subtotal</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Forma de Pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let s of ventasDetalles">
+                        <td>{{s.nombre}}</td>
+                        <td>{{ s.fecha | date:'dd/MM/yyyy' }}</td>
+                        <td>${{s.subtotal}}</td>
+                        <td>${{s.total}}</td>
+                        <td>{{s.formaPago}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

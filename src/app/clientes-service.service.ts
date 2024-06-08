@@ -11,9 +11,13 @@ export class ClientesServiceService {
   public urlService: string = "http://localhost:8082/";
   //public urlService: string = "http://10.10.10.36:8082/"; // Ambiente Externo
   public listaClientes: any[];
+  public listaVentasDetalle : any[];
   constructor(private http: HttpClient, private router : Router) { 
     this.listaClientes = [];
+    this.listaVentasDetalle = [];
    }
+
+   
   // TODO: Metodos 
 
     // Metodo que al realizar una peticion get al API, para obtener la lista de clientes
@@ -22,6 +26,13 @@ export class ClientesServiceService {
       this.http.get(this.urlService + 'api/clientes').subscribe((respuesta : any) => {
         console.log(respuesta);
         this.listaClientes = respuesta;
+      });
+    }
+
+    obtenerVentas(id : any) : void {
+      this.http.get(this.urlService + 'api/clientes/comprasDetalle/' + id).subscribe((respuesta : any) => {
+        console.log(respuesta);
+        this.listaVentasDetalle = respuesta;
       });
     }
 
