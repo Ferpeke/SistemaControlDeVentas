@@ -73,7 +73,7 @@ export class ClientesServiceService {
 
     eliminarCliente(id : number) : void {
       const parametrosPeticion = new HttpParams().set("id", id);
-      this.http.delete(this.urlService + "api/clientes", {params : parametrosPeticion}).subscribe((respuesta : any) => {
+      this.http.delete(this.urlService + "api/clientes/eliminar", {params : parametrosPeticion}).subscribe((respuesta : any) => {
         console.log(respuesta);
         Swal.fire({
           title: "Cliente eliminado",
@@ -91,6 +91,13 @@ export class ClientesServiceService {
         });
       });
     }
-     
+    // TODO: Método que realiza una peticion get a la api para recuperar un cliente por id
+    obtenerCliente(id : number) : void {
+      this.http.get(this.urlService + "api/clientes/obtener" + id).subscribe((respuesta : any) => {
+        console.log(respuesta);
+        this.cliente = respuesta;
+      });
+    }
+    
 
 }
