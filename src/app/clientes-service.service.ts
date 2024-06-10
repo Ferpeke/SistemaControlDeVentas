@@ -91,6 +91,7 @@ export class ClientesServiceService {
         });
       });
     }
+
     // TODO: Método que realiza una peticion get a la api para recuperar un cliente por id
     obtenerCliente(id : number) : void {
       this.http.get(this.urlService + "api/clientes/obtener" + id).subscribe((respuesta : any) => {
@@ -99,5 +100,35 @@ export class ClientesServiceService {
       });
     }
     
+    // TODO: Método para actulizar un cliente
+
+    actualizarCliente(id: number, nombre : string, apPat: string, apMat: string, telefono : string, correo : string, numAfiliado: string) {
+      this.http.put(this.urlService + "api/clientes/actulizar/" + id,{
+        "id" : id,
+        "nombre" : nombre,
+        "apPaterno" : apPat,
+        "apMaterno" : apMat,
+        "telefono" : telefono,
+        "correo" : correo,
+        "numAfiliado" : numAfiliado
+      },).subscribe(( respuesta : any) => {
+        console.log(respuesta);
+        Swal.fire({
+          title: "Cliente Actualizado",
+          icon:"success",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "OK",
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+              //this.obtenerListaClientes();
+              this.router.navigate(['clientes']);
+          } else if (result.isDenied) {
+            Swal.fire("El registro se cancelo", "", "warning");
+          }
+        });
+      });
+    }
 
 }
