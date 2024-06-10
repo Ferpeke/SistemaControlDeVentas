@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -12,6 +12,8 @@ export class ClientesServiceService {
   //public urlService: string = "http://10.10.10.36:8082/"; // Ambiente Externo
   public listaClientes: any[];
   public listaVentasDetalle : any[];
+  public cliente : any;
+
   constructor(private http: HttpClient, private router : Router) { 
     this.listaClientes = [];
     this.listaVentasDetalle = [];
@@ -66,5 +68,29 @@ export class ClientesServiceService {
         });
       });
     }
+
+    // TODO: Método que realiza una peticion dele a la API para eliminar un cliente
+
+    eliminarCliente(id : number) : void {
+      const parametrosPeticion = new HttpParams().set("id", id);
+      this.http.delete(this.urlService + "api/clientes", {params : parametrosPeticion}).subscribe((respuesta : any) => {
+        console.log(respuesta);
+        Swal.fire({
+          title: "Cliente eliminado",
+          icon:"success",
+          showDenyButton: false,
+          showCancelButton: false,
+          confirmButtonText: "OK",
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+              this.obtenerListaClientes();
+          } else if (result.isDenied) {
+            Swal.fire("El registro se cancelo", "", "warning");
+          }
+        });
+      });
+    }
+     
 
 }
