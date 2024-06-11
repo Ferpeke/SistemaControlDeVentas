@@ -94,8 +94,7 @@ export class ClientesServiceService {
 
     // TODO: Método que realiza una peticion get a la api para recuperar un cliente por id
     obtenerCliente(id : number) : void {
-      this.http.get(this.urlService + "api/clientes/obtener" + id).subscribe((respuesta : any) => {
-        console.log(respuesta);
+      this.http.get(this.urlService + "api/clientes/obtener/" + id).subscribe((respuesta : any) => {
         this.cliente = respuesta;
       });
     }
@@ -103,7 +102,7 @@ export class ClientesServiceService {
     // TODO: Método para actulizar un cliente
 
     actualizarCliente(id: number, nombre : string, apPat: string, apMat: string, telefono : string, correo : string, numAfiliado: string) {
-      this.http.put(this.urlService + "api/clientes/actulizar/" + id,{
+      this.http.put(this.urlService + "api/clientes/actualizar/" + id,{
         "id" : id,
         "nombre" : nombre,
         "apPaterno" : apPat,

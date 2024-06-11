@@ -23,15 +23,15 @@
                         <td>{{c.nombre}} {{c.apPaterno}} {{c.apMaterno}}</td>
                         <td>{{c.numAfiliado}}</td>
                         <td>
-                            <a href="" class="btn btn-success">Detalle</a>
+                            <a [routerLink]="['/clientes/detalles/',c.id]" class="btn btn-success">Detalle</a>
                         </td>
 
                         <td>
-                            <a href="" class="btn btn-warning">Editar</a>
+                            <a [routerLink]="['/clientes/editar/',c.id]" class="btn btn-warning">Editar</a>
                         </td>
                         
                         <td>
-                            <a href="" class="btn btn-danger">Eliminar</a>
+                            <button (click)="eliminar(c.id)" class="btn btn-danger">Eliminar</button>
                         </td>
 
                         <td>
